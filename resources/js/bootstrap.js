@@ -54,3 +54,9 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+document.addEventListener('DOMContentLoaded', function() {
+    let elems = document.querySelectorAll('.parallax');
+    M.Parallax.init(elems, {});
+});
+

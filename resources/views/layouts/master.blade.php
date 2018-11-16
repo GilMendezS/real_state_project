@@ -10,14 +10,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     @yield('extra-css')
+    <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <title>Inmobiliaria</title>
 </head>
 <body>
-    @include('partials.navbar')
-    <div class="container-fluid" id="app">
-            @yield('content')
-    </div>
-    @include('partials.footer')
+    <header>
+            @include('partials.navbar')
+    </header>
+    <aside>
+        @if (Auth::check())
+            @include('partials.sidebar')
+        @endif
+    </aside>
+    <main>
+        <div class="container-fluid" id="app">
+            @yield('content')                
+        </div>
+    </main>
+    @if (!Auth::check())
+        @include('partials.footer')
+    @endif
+    
     <!--Materialize Js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{asset('js/app.js')}}"></script>
